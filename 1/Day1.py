@@ -45,8 +45,7 @@ def add_up_to_bonus(array, k):
     add_up = False
     for i in range(len(array)):
         if (k - array[i]) in array[(i+1):]:
-            if not ((array.count(array[i]) == 1) and array[i]*2 == k):
-                return not add_up
+            return not add_up
     return add_up
 
 
