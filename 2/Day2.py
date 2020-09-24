@@ -38,12 +38,10 @@ def new_array(array):
         array: The array to be processed.
 
     Returns:
-        new_array (list): The new array with such as asked in the problem
+        new_array (list): The new array such as asked in the problem
     """
-    new_array = []
-    for i in range(len(array)):
-        new_array.append(int(array_product(array) / array[i]))
-    return new_array
+    product = array_product(array)
+    return [int(product / item) for item in array]
 
 
 def new_array_without_division(array):
@@ -59,14 +57,15 @@ def new_array_without_division(array):
         new_array (list): The new array with such as asked in the problem
     """
     new_array = []
-    for i in range(len(array)):
-        array_without_i = list(array)
-        array_without_i.remove(array[i])
-        new_array.append(array_product(array_without_i))
+    for item in array:
+        array_without_item = list(array)
+        array_without_item.remove(item)
+        new_array.append(array_product(array_without_item))
     return new_array
 
 
 if __name__ == '__main__':
     test_array = [1, 2, 3, 4, 5]
-    print(new_array(test_array))
-    print(new_array_without_division(test_array))
+    expected_array = [120, 60, 40, 30, 24]
+    assert new_array(test_array) == expected_array
+    assert new_array_without_division(test_array) == expected_array
